@@ -73,8 +73,8 @@ public class InterfaceVisual {
 			public void actionPerformed(ActionEvent e) {
 				
 				TablaJuego tabla = new TablaJuego (5);
-				int fila = tabla.getFila();
-				int columna = tabla.getColumna();
+				int fila = tabla.getTamano();
+				int columna = tabla.getTamano();
 				botones = new JToggleButton [fila][columna];
 				panelMatriz.removeAll(); // limpia antes por si había otra tabla
 			    panelMatriz.setLayout(new GridLayout(fila, columna, 2, 2));
