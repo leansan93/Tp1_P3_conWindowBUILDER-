@@ -40,8 +40,7 @@ public class TablaJuego {
 //----------------------------------------------------------------------------------------------------------------	
 
 
-	 // muestra como texto a las pistas filas para la interfaz con la matriz creada aleatoria del juego
-	
+	 // muestra como texto a las pistas filas como un arraylist con string para que se lo llame directamente desde la interfaz
 	
 	public ArrayList<String> getPistasFilasComoTexto() {
 	    int[][] pistas = calculaPistaFila(tabla); // recorre la tabla que se creo 
@@ -66,7 +65,7 @@ public class TablaJuego {
 	    return resultado;
 	}
 /////////////////////////////////////////////////////////////////////////////////////////
-	// calcula la pista fila 
+	// calcula la pista fila (de lo de martin )
 	
 	
 		public  int [][] calculaPistaFila(int[][] matriz) {
@@ -105,7 +104,7 @@ public class TablaJuego {
 			 
 		
 //-------------------------------------------------------------------------------------------------------------------------------------
-/// muestra la pista de las columnas 
+/// muestra la pista de las columnas como un arraylist con string para que se lo llame directamente desde la interfaz
 		
 		public ArrayList<String> getPistasColumnasComoTexto() {
 		    int[][] pistas = calculaPistaColumna(tabla); // recorre la tabla que se creo 
@@ -138,7 +137,8 @@ public class TablaJuego {
 		
 		
 //-----------------------------------------------------------------------------		
-		//guarda en un ArrayList las pistas de las columnas
+		//guarda en un ArrayList las pistas de las columnas (de lo de martin )
+		
 			public  int [][] calculaPistaColumna(int[][] tablacreada) {
 				 int filas = tablacreada.length;
 			     int columnas = tablacreada[0].length;
@@ -184,7 +184,8 @@ public class TablaJuego {
 			// correcta todo seguido sin darle a una x , en el caso de que halla solo uno que se equivoco perdera 
 			
 			
-			
+/////----------------------------------------------------
+			// tambien hay que adaptar la actualizacion de cuando se clickea la matriz 
 			
 //-----------------------------------------------------------------------------------------------------------------------------------------
 			// getters and setters de TABLA 

@@ -113,8 +113,8 @@ public class InterfaceVisual {
 				botones = new JToggleButton [fila][columna]; // y creo el boton con esos tamanos 
 				panelMatriz.removeAll(); // limpia antes por si había otra tabla
 			    panelMatriz.setLayout(new GridLayout(fila, columna, 2, 2)); 
-			    panelPistaFila.removeAll();
-		        panelPistaColumna.removeAll();
+			    panelPistaFila.removeAll(); // borra el panel de pistas filas 
+		        panelPistaColumna.removeAll(); // borra el panel de pistas columnas ambas para que no tenga problemas al recorrerlos
 			  
 			  
 			    
@@ -134,19 +134,21 @@ public class InterfaceVisual {
 			            }
 			        }
 			        ///// muestra pista filas 
-			        ArrayList<String> listaPistaFila = tabla.getPistasFilasComoTexto();
+			     // se crea arraylist pasandole el getpistasfilascomotexto que en la parte logica calcula y muestra la pista fila 
+			        ArrayList<String> listaPistaFila = tabla.getPistasFilasComoTexto(); 
 			       
 			        for (String pista : listaPistaFila) {
-			            JLabel labelFila = new JLabel(pista);
-			            panelPistaFila.add(labelFila);
+			            JLabel labelFila = new JLabel(pista); // se pasa en label las pista fila recorrida
+			            panelPistaFila.add(labelFila); // se lo pasa al panel de las pistas filas 
 			        }
 			        
 			        
 			        ////// muestra pistas columnas 
 			        
-				    ArrayList<String> listaPistaColumna= tabla.getPistasColumnasComoTexto();
+			        //se crea arraylist pasandole el getpistasCoklumnascomotexto que en la parte logica calcula y muestra la pista fila 
+				    ArrayList<String> listaPistaColumna= tabla.getPistasColumnasComoTexto(); 
 			        
-			      
+			      // se recorre y se los adhiere al nuevo label se lo pasa al panel columna 
 			        for (String pista : listaPistaColumna) {
 			           panelPistaColumna.add(new JLabel(pista));
 			        }
@@ -157,7 +159,7 @@ public class InterfaceVisual {
 			         
 			        panelMatriz.revalidate();
 			        panelMatriz.repaint();
-			        /// lo incorpora en la pantalla 
+			        /// Se muestran las pistas  por  pantalla  
 			        panelPistaFila.revalidate();
 			        panelPistaFila.repaint();
 			        panelPistaColumna.revalidate();
