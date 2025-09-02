@@ -38,11 +38,40 @@ public class TablaJuego {
 		
 
 //----------------------------------------------------------------------------------------------------------------	
-// PISTAS  DE LA FILA DE LA TABLA COMPLETO INVOCANDO A LOS METODOS PARA ENCONTRAR LAS PISTAS DE LAS FILAS Y MOSTRARLO   
-// EN UN  ArrayList LAS PISTAS DE LAS FILAS 
-			public  int [][] buscarPistasFilaFinal(int[][] matriz) {
+
+
+	 // muestra como texto a las pistas filas para la interfaz con la matriz creada aleatoria del juego
+	
+	
+	public ArrayList<String> getPistasFilasComoTexto() {
+	    int[][] pistas = calculaPistaFila(tabla); // recorre la tabla que se creo 
+	    ArrayList<String> resultado = new ArrayList<>();
+
+	    for (int i = 0; i < pistas.length; i++) {
+	        StringBuilder sb = new StringBuilder();
+
+	        for (int j = 0; j < pistas[i].length; j++) {
+	            if (pistas[i][j] != 0) {
+	                sb.append(pistas[i][j]).append(" ");
+	            }
+	        }
+
+	        if (sb.length() == 0) {
+	            sb.append("0"); // si la fila no tiene bloques
+	        }
+
+	        resultado.add(sb.toString().trim());
+	    }
+
+	    return resultado;
+	}
+/////////////////////////////////////////////////////////////////////////////////////////
+	// calcula la pista fila 
+	
+	
+		public  int [][] calculaPistaFila(int[][] matriz) {
 				int filas = matriz.length;
-			     int columnas = matriz[0].length;
+			    int columnas = matriz[0].length;
 			     // MATRIZ DONDE SE GUARDARAN LAS PISTAS DE CADA FILA
 			     int[][] pistasFilas = new int[filas][columnas];
 			     
@@ -73,11 +102,44 @@ public class TablaJuego {
 			}
 			
 			
-			
+			 
 		
 //-------------------------------------------------------------------------------------------------------------------------------------
-//guarda en un ArrayList las pistas de las columnas
-			public  int [][] buscarPistasColumnaFinal(int[][] tablacreada) {
+/// muestra la pista de las columnas 
+		
+		public ArrayList<String> getPistasColumnasComoTexto() {
+		    int[][] pistas = calculaPistaColumna(tabla); // recorre la tabla que se creo 
+		    ArrayList<String> resultado = new ArrayList<>();
+
+		    for (int i = 0; i < pistas.length; i++) {
+		        StringBuilder sb = new StringBuilder();
+
+		        for (int j = 0; j < pistas[i].length; j++) {
+		            if (pistas[i][j] != 0) {
+		                sb.append(pistas[i][j]).append(" ");
+		            }
+		        }
+
+		        if (sb.length() == 0) {
+		            sb.append("0"); // si la fila no tiene bloques
+		        }
+
+		        resultado.add(sb.toString().trim());
+		    }
+
+		    return resultado;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+//-----------------------------------------------------------------------------		
+		//guarda en un ArrayList las pistas de las columnas
+			public  int [][] calculaPistaColumna(int[][] tablacreada) {
 				 int filas = tablacreada.length;
 			     int columnas = tablacreada[0].length;
 

@@ -16,12 +16,20 @@ import javax.swing.JToggleButton;
 import Negocio.TablaJuego;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class InterfaceVisual {
 
 	private JFrame frame;
 	private JToggleButton[][] botones;
+	private TablaJuego tabla;
+	
+	
+	private JPanel panelPistaColumna; 
+    private	JPanel panelPistaFila ;
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -50,18 +58,18 @@ public class InterfaceVisual {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 501, 380);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("Nanograma");
 		lblTitulo.setFont(new Font("Times New Roman", Font.ITALIC, 18));
-		lblTitulo.setBounds(156, 11, 107, 38);
+		lblTitulo.setBounds(144, 0, 107, 38);
 		frame.getContentPane().add(lblTitulo);
 		
 		
 		JPanel panelMatriz = new JPanel();
-		panelMatriz.setBounds(109, 69, 315, 181);
+		panelMatriz.setBounds(109, 69, 366, 261);
 		frame.getContentPane().add(panelMatriz);
 		
 		JButton btnVerificar = new JButton("verificar");
@@ -72,8 +80,19 @@ public class InterfaceVisual {
 				
 			}
 		});
-		btnVerificar.setBounds(10, 227, 89, 23);
+		btnVerificar.setBounds(0, 307, 71, 23);
 		frame.getContentPane().add(btnVerificar);
+		
+		
+		
+		
+		panelPistaColumna= new JPanel();
+		panelPistaColumna.setBounds(109, 40, 366, 29);
+		frame.getContentPane().add(panelPistaColumna);
+		
+		panelPistaFila= new JPanel();
+		panelPistaFila.setBounds(81, 71, 29, 259);
+		frame.getContentPane().add(panelPistaFila);
 		
 		JButton btnTabla5x5 = new JButton("Tabla 5x5");
 		btnTabla5x5.addActionListener(new ActionListener() {
@@ -86,44 +105,73 @@ public class InterfaceVisual {
 					
 					
 				*/ 
+		
 				
-				
-				TablaJuego tabla = new TablaJuego (5); // crea desde la logica la tabla con un unico parametro
+				tabla = new TablaJuego (5); // crea desde la logica la tabla con un unico parametro
 				int fila = tabla.getTamano(); // tamno de fila del tablero
 				int columna = tabla.getTamano(); // tamano del tablero 
 				botones = new JToggleButton [fila][columna]; // y creo el boton con esos tamanos 
 				panelMatriz.removeAll(); // limpia antes por si había otra tabla
 			    panelMatriz.setLayout(new GridLayout(fila, columna, 2, 2)); 
-
+			    panelPistaFila.removeAll();
+		        panelPistaColumna.removeAll();
+			  
+			  
+			    
 			    // los recorre y pinta  
 			        for(int fil = 0; fil < fila; fil++) {
 			            for(int col = 0; col < columna; col++) {
 			                botones[fil][col] = new JToggleButton();
 			                botones[fil][col].setOpaque(true);
-			         
+			               
 			                botones[fil][col].setBackground(Color.WHITE);
 			                panelMatriz.add(botones[fil][col]);
 			                
+			                
+			              
+			             
+			                
 			            }
 			        }
-			
+			        ///// muestra pista filas 
+			        ArrayList<String> listaPistaFila = tabla.getPistasFilasComoTexto();
+			       
+			        for (String pista : listaPistaFila) {
+			            JLabel labelFila = new JLabel(pista);
+			            panelPistaFila.add(labelFila);
+			        }
+			        
+			        
+			        ////// muestra pistas columnas 
+			        
+				    ArrayList<String> listaPistaColumna= tabla.getPistasColumnasComoTexto();
+			        
+			      
+			        for (String pista : listaPistaColumna) {
+			           panelPistaColumna.add(new JLabel(pista));
+			        }
 
+			         
+			         
+			         
+			         
 			        panelMatriz.revalidate();
 			        panelMatriz.repaint();
-			    
+			        /// lo incorpora en la pantalla 
+			        panelPistaFila.revalidate();
+			        panelPistaFila.repaint();
+			        panelPistaColumna.revalidate();
+			        panelPistaColumna.repaint();
+			       
 			} 
 		});
-		btnTabla5x5.setBounds(10, 69, 89, 23);
+		btnTabla5x5.setBounds(0, 37, 79, 23);
 		frame.getContentPane().add(btnTabla5x5);
 		
 		
- 
-		 
-				
+		
+	
+		
 				
 	}
-	
-		
-		
-	
 }
